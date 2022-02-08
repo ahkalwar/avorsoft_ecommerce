@@ -33,6 +33,47 @@
 									</thead>
 
 									<tbody>
+										<?php $cart_total = 0; ?>
+										@if(Auth::check())
+										@foreach($cartItems as $cartitem)
+										<tr>
+											<td class="product-col">
+												<div class="product">
+													<figure class="product-media">
+														<a href="#">
+													@foreach($cartitem->product->images as $image)
+                                    					@if($image->is_main == 1)
+															<img src="{{ asset('uploads/products/'.$image->image) }}" alt="Product image">
+														@endif
+                                    				@endforeach
+														</a>
+													</figure>
+
+													<h3 class="product-title">
+														<a href="{{ url('single/'.str_replace(' ', '-', $cartitem->product->Product_Name)) }}">{{ $cartitem->product->Product_Name }}</a>
+													</h3><!-- End .product-title -->
+												</div><!-- End .product -->
+											</td>
+											<td class="price-col">${{ $cartitem->product->Price }}</td>
+											<td class="quantity-col">
+                                                <div class="cart-product-quantity">
+                                                    <input type="number" class="form-control" value="{{ $cartitem->qty }}" min="1" max="10" step="1" data-decimals="0" required>
+                                                </div><!-- End .cart-product-quantity -->
+                                            </td>
+											<td class="total-col">${{ $cartitem->product->Price*$cartitem->qty }}</td>
+											<td class="remove-col">
+											<form action="{{ url('remove_cart_item') }}" method="post">
+                                   			@csrf
+											   	<input type="hidden" name="id" id="id" value="{{ $cartitem->id }}">
+												<button type="submit" class="btn-remove"><i class="icon-close"></i></button>
+											</form>
+											</td>
+										</tr>
+										<?php
+										$cart_total += ($cartitem->product->Price*$cartitem->qty);
+										?>
+										@endforeach
+										@else
                                         @foreach($cartItems as $cartitem)
 										<tr>
 											<td class="product-col">
@@ -64,6 +105,7 @@
 											</td>
 										</tr>
 										@endforeach
+										@endif
 									</tbody>
 								</table><!-- End .table table-wishlist -->
 
@@ -90,7 +132,7 @@
 	                					<tbody>
 	                						<tr class="summary-subtotal">
 	                							<td>Subtotal:</td>
-	                							<td>${{ Cart::getTotal() }}</td>
+	                							<td>${{ $cart_total??Cart::getTotal() }}</td>
 	                						</tr><!-- End .summary-subtotal -->
 	                						<tr class="summary-shipping">
 	                							<td>Shipping:</td>
@@ -134,7 +176,7 @@
 
 	                						<tr class="summary-total">
 	                							<td>Total:</td>
-	                							<td>${{ Cart::getTotal() }}</td>
+	                							<td>${{ $cart_total??Cart::getTotal() }}</td>
 	                						</tr><!-- End .summary-total -->
 	                					</tbody>
 	                				</table><!-- End .table table-summary -->
