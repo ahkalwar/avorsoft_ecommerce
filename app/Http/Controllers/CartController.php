@@ -58,7 +58,12 @@ class CartController extends Controller
         return view('cart', $data);
     }
     public function remove_cart_item(Request $request){
-        \Cart::remove($request->id);
+        if(Auth::check()) {
+            $delete = Cart::where('id', $request->id)->delete();
+        }
+        else{
+            \Cart::remove($request->id);
+        }
         return redirect()->back();
     }
 }

@@ -1,7 +1,7 @@
 $(document).ready(function () {
     $(".btn-register").click(function(){
         var formdata = $("#register-form").serialize();
-        $.post("customer_register", formdata, function(res){
+        $.post(baseurl+"/customer_register", formdata, function(res){
             if(res.success == true){
                 // location.reload();
                 $('.success-msg').html('Successfully Registered');
@@ -18,7 +18,7 @@ $(document).ready(function () {
     });
     $(".btn-login").click(function(){
         var formdata = $("#login-form").serialize();
-        $.post("customer_login", formdata, function(res){
+        $.post(baseurl+"/customer_login", formdata, function(res){
             console.log(res);
             if(res.success == true){
                 location.reload();
