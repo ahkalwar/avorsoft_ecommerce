@@ -170,7 +170,7 @@
 	                						</tr><!-- End .summary-shipping-row -->
 
 	                						<tr class="summary-shipping-estimate">
-	                							<td>Estimate for Your Country<br> <a href="dashboard.html">Change address</a></td>
+	                							<td>Estimate for Your Country<br> <a href="#">Change address</a></td>
 	                							<td>&nbsp;</td>
 	                						</tr><!-- End .summary-shipping-estimate -->
 
@@ -180,9 +180,15 @@
 	                						</tr><!-- End .summary-total -->
 	                					</tbody>
 	                				</table><!-- End .table table-summary -->
-
-	                				<a href="checkout.html" class="btn btn-outline-primary-2 btn-order btn-block">PROCEED TO CHECKOUT</a>
-	                			</div><!-- End .summary -->
+									
+	                				<a href="{{ url('checkout') }}" class="btn btn-outline-primary-2 btn-order btn-block <?php echo (!Auth::check() || count($cartItems) == 0)?'disabled':''; ?>">PROCEED TO CHECKOUT</a>
+	                				@if(!Auth::check())
+									<span class="text-danger">Login first to Checkout</span>
+									@elseif(count($cartItems) == 0)
+									<span class="text-danger">Cart Empty</span>
+									@endif
+									
+								</div><!-- End .summary -->
 
 		            			<a href="category.html" class="btn btn-outline-dark-2 btn-block mb-3"><span>CONTINUE SHOPPING</span><i class="icon-refresh"></i></a>
 	                		</aside><!-- End .col-lg-3 -->

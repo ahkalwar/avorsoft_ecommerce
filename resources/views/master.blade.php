@@ -46,7 +46,11 @@
                     <div class="header-left">
                         <a href="tel:#"><i class="icon-phone"></i>Call: +0123 456 789</a>
                     </div><!-- End .header-left -->
-
+                    <div class="header-center">
+                        @if (session('msg'))
+                        <h4 class="text-danger">{{ session('msg') }}</h4>
+                        @endif
+                    </div>
                     <div class="header-right">
 
                         <ul class="top-menu">

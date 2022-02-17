@@ -7,6 +7,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\CheckoutController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -36,3 +37,5 @@ Route::get('/customer_logout', [LoginController::class, 'customer_logout']);
 Route::post('/add_item_to_cart', [CartController::class, 'add_item_to_cart']);
 Route::get('/cart', [CartController::class, 'cart_list']);
 Route::post('/remove_cart_item', [CartController::class, 'remove_cart_item']);
+Route::get('/checkout', [CheckoutController::class, 'checkout']);
+Route::post('/place_order', [CheckoutController::class, 'place_order']);
