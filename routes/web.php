@@ -32,6 +32,8 @@ Route::get('/', [HomeController::class, 'index']);
 Route::get('/categories/{category_name}', [HomeController::class, 'products_by_category']);
 Route::get('/single/{product_name}', [HomeController::class, 'single_product']);
 Route::post('/customer_register', [RegisterController::class, 'customer_register']);
+Route::get('/account', [RegisterController::class, 'account']);
+Route::post('/update_account/{id}', [RegisterController::class, 'update_account']);
 Route::post('/customer_login', [LoginController::class, 'customer_login']);
 Route::get('/customer_logout', [LoginController::class, 'customer_logout']);
 Route::post('/add_item_to_cart', [CartController::class, 'add_item_to_cart']);

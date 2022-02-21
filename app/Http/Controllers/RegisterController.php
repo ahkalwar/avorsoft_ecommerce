@@ -38,4 +38,34 @@ class RegisterController extends Controller
         list($status,$data) = $create ? [ true , $create] : [ false , ''] ;
         return response()->json(['success' => $status, 'data' => $data]);
     }
+    public function account(){
+        $data = array();
+        $data['categories'] = Category::where('is_active', 1)->get();
+        $data['user'] = Auth::user();
+        return view('account', $data);
+    }
+    public function update_account(Request $request, $id){
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'email' => 'required|email',
+            'confirm_password' => 'same:password',
+        ]);
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator);
+        }
+        $fields = array(
+            'name' => $request->name,
+            'email' => $request->email
+        );
+        if($request->password){
+            $fields['password'] = bcrypt($request->password);
+        }
+        $update = User::where('id', $id)->update($fields);
+        if($update){
+            return redirect()->back()->with('msg', 'Profile Updated!');
+        }
+        else{
+            return redirect()->back()->with('msg', 'Error Occured, Try Again!');
+        }
+    }
 }

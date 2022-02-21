@@ -84,7 +84,7 @@
                                     if (Auth::check()) {
                                     ?>
                                     <li>
-                                        <a href="#">Account</a>
+                                        <a href="{{ url('account') }}">Account</a>
                                     </li>
                                     <li>
                                         <a href="{{ url('customer_logout') }}">Logout</a>
