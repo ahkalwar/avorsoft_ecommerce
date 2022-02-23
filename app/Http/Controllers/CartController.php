@@ -9,8 +9,10 @@ use App\Models\ProductImage;
 use App\Models\User;
 use App\Models\Cart;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Traits\GeneralTrait;
 class CartController extends Controller
 {
+    use GeneralTrait;
     public function add_item_to_cart(Request $request){
         if(Auth::check()) {
             $user_id = Auth::id();
@@ -47,7 +49,8 @@ class CartController extends Controller
     }
     public function cart_list(){
         $data = array();
-        $data['categories'] = Category::where('is_active', 1)->get();
+        $data['categories'] = $this->get_categories();
+        $data['cart_count'] = $this->get_cart_count();
         if(Auth::check()) {
             $user_id = Auth::id();
             $data['cartItems'] = Cart::where('user_id', $user_id)->get();

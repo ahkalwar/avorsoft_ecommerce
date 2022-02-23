@@ -7,9 +7,12 @@ use App\Models\Category;
 use App\Models\Product;
 use App\Models\ProductImage;
 use App\Models\User;
+use App\Models\Cart;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Traits\GeneralTrait;
 class RegisterController extends Controller
 {
+    use GeneralTrait;
     public function customer_register(Request $request){
         $validator = Validator::make($request->all(), [
             'name' => 'required',
@@ -40,7 +43,8 @@ class RegisterController extends Controller
     }
     public function account(){
         $data = array();
-        $data['categories'] = Category::where('is_active', 1)->get();
+        $data['categories'] = $this->get_categories();
+        $data['cart_count'] = $this->get_cart_count();
         $data['user'] = Auth::user();
         return view('account', $data);
     }

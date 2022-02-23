@@ -168,7 +168,16 @@
                             <div class="dropdown cart-dropdown">
                                 <a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static">
                                     <i class="icon-shopping-cart"></i>
-                                    <span class="cart-count" style="display:{{ count(Cart::getContent())>0?'flex':'none' }};">{{ count(Cart::getContent()) }}</span>
+                                    <?php
+                                    $count_cart = 0;
+                                    if($cart_count){
+                                        $count_cart = $cart_count;
+                                    }
+                                    else if(count(Cart::getContent())){
+                                        $count_cart = count(Cart::getContent());
+                                    }
+                                    ?>
+                                    <span class="cart-count" style="display:{{ $count_cart>0?'flex':'none' }};">{{ $count_cart }}</span>
                                     <span class="cart-txt">Cart</span>
                                 </a>
 
