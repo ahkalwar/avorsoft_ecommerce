@@ -7,8 +7,12 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\CartController;
+<<<<<<< HEAD
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
+=======
+use App\Http\Controllers\CheckoutController;
+>>>>>>> 049f3a0970b016826ef931321d1d544bd06b78b7
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -33,14 +37,21 @@ Route::get('/', [HomeController::class, 'index']);
 Route::get('/categories/{category_name}', [HomeController::class, 'products_by_category']);
 Route::get('/single/{product_name}', [HomeController::class, 'single_product']);
 Route::post('/customer_register', [RegisterController::class, 'customer_register']);
+Route::get('/account', [RegisterController::class, 'account']);
+Route::post('/update_account/{id}', [RegisterController::class, 'update_account']);
 Route::post('/customer_login', [LoginController::class, 'customer_login']);
 Route::get('/customer_logout', [LoginController::class, 'customer_logout']);
 Route::post('/add_item_to_cart', [CartController::class, 'add_item_to_cart']);
 Route::get('/cart', [CartController::class, 'cart_list']);
 Route::post('/remove_cart_item', [CartController::class, 'remove_cart_item']);
+<<<<<<< HEAD
 // Admin 
 //Route::get('/add_category', CategoryController::class, 'add_category');
 Route::resource('/category', CategoryController::class);
 Route::resource('/role', RoleController::class);
 Route::resource('/user', UserController::class);
 
+=======
+Route::get('/checkout', [CheckoutController::class, 'checkout']);
+Route::post('/place_order', [CheckoutController::class, 'place_order']);
+>>>>>>> 049f3a0970b016826ef931321d1d544bd06b78b7

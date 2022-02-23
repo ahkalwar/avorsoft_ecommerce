@@ -37,4 +37,16 @@ $(document).ready(function () {
             $(".cart-count").css('display', 'flex');
         });        
     });
+    $(".checkout_btn").click(function(){
+        var fields = $("#order_form").serialize();
+        $.post(baseurl+"/place_order", fields, function(res){
+            if(res.success == true){
+                $(".main").hide();
+                $(".thankyou").show();
+            }
+            else{
+                alert('There is an issue for placing thee order. Kindly try again!');
+            }
+        });
+    });
 });

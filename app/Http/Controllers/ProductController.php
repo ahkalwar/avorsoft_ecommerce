@@ -6,11 +6,14 @@ use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\ProductImage;
+use App\Models\Cart;
+use App\Http\Traits\GeneralTrait;
 class ProductController extends Controller
 {
+    use GeneralTrait;
     public function index()
     {
-        $categories = Category::where('is_active', 1)->get();
+        $categories = $this->get_categories();
         return view('add_product', ['categories'=>$categories]);
     }
 
