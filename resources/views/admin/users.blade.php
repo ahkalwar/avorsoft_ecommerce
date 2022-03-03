@@ -42,7 +42,7 @@
                                                 <td>{{ $user->name }}</td>
                                                 <td>{{ $user->email }}</td>
                                                 <td>{{ date('d-M-Y' ,strtotime($user->created_at)) }}</td>
-                                                <td>{{ $user->status == 1?'Active':'Inactive' }}</td>
+                                                <td>{{ $user->is_active == 1?'Active':'Inactive' }}</td>
                                                 <td class="text-center">
                                                 <a href="{{ url('user/'.$user->id) }}" class="btn btn-sm btn-success">
                                                 <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-pencil" fill="currentColor" xmlns="http://www.w3.org/2000/svg">

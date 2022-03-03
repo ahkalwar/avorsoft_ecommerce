@@ -1,7 +1,6 @@
 @extends('admin/master')
 @section('content')
 
-<div id="layoutSidenav_content">
                 <main>
                     <div class="container">
                     <div class="row mt-4"> 
@@ -9,7 +8,7 @@
                             <h1 class="">Edit Category</h1>
                         </div>
                         <div class="col-md-2 col-lg-2 text-right">
-                            <a href="{{ url('categories') }}" class="btn btn-success">View List</a>
+                            <a href="{{ url('category') }}" class="btn btn-success">View List</a>
                         </div>
                     </div>
                     <hr />
@@ -38,9 +37,9 @@
                                             <div class="form-row">
                                                 <div class="col-md-12">
                                                     <div class="form-group">
-                                                        <label class="small mb-1" for="threshold">Category Image</label>
-                                                        <input class="form-control py-4" id="threshold" type="file" name="category_image" value="{{ $category->category_image }}" placeholder="Enter Threshold value here" Required="required" />
-                                                        <span class="small text-danger">{{ $errors->first('threshold') }}</span>
+                                                        <label class="small mb-1" for="category_image">Category Image</label>
+                                                        <input class="form-control py-4" id="category_image" type="file" name="category_image" value="{{ $category->category_image }}" Required="required" />
+                                                        <span class="small text-danger">{{ $errors->first('category_image') }}</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -66,17 +65,5 @@
                         </div>
                     </div>
                 </main>
-                <footer class="py-4 bg-light mt-auto">
-                    <div class="container-fluid">
-                        <div class="d-flex align-items-center justify-content-between small">
-                            <div class="text-muted">Copyright &copy; Your Website 2020</div>
-                            <div>
-                                <a href="#">Privacy Policy</a>
-                                &middot;
-                                <a href="#">Terms &amp; Conditions</a>
-                            </div>
-                        </div>
-                    </div>
-                </footer>
-            </div>               
+                      
 @endsection

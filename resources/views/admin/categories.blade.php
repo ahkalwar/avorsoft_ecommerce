@@ -27,7 +27,7 @@
                                             <tr>
                                                 <th>Id</th>
                                                 <th>Name</th>
-                                                <th>Threshold</th>
+                                                <th>Images</th>
                                                 <th>Craeted at</th>
                                                 <th>Status</th>
                                                 <th>Actions</th>
@@ -40,9 +40,15 @@
                                             <tr>
                                                 <td>{{ $i++ }}</td>
                                                 <td>{{ $category->category_name }}</td>
-                                                <td>{{ $category->category_image }}</td>
+                                                <td>
+                                                @if ($category->category_image)
+                                                <img src="{{ asset('uploads/categories/'.$category->category_image) }}" alt="{{ $category->category_image }}" height="30px" width="30px">
+                                                @else
+                                                <img src="{{ asset('assets/dist/img/default-150x150.png') }}" >
+                                                @endif
+                                                </td>
                                                 <td>{{ date('d-M-Y' ,strtotime($category->created_at)) }}</td>
-                                                <td>{{ $category->status == 1?'Active':'Inactive' }}</td>
+                                                <td>{{ $category->is_active == 1?'Active':'Inactive' }}</td>
                                                 <td class="text-center">
                                                 <a href="{{ url('category/'.$category->id) }}" class="btn btn-sm btn-success">
                                                 <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-pencil" fill="currentColor" xmlns="http://www.w3.org/2000/svg">

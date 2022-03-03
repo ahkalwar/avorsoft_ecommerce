@@ -38,8 +38,8 @@
                                             <div class="form-row">
                                                 <div class="col-md-12">
                                                     <div class="form-group">
-                                                        <label class="small mb-1" for="threshold">Category Image</label>
-                                                        <input class="form-control py-4" id="threshold" type="file" name="category_image"  Required="required" />
+                                                        <label class="small mb-1" for="category_image">Category Image</label>
+                                                        <input class="form-control py-4" id="category_image" type="file" name="category_image"  Required="required" />
                                                         <span class="small text-danger">{{ $errors->first('category_image') }}</span>
                                                     </div>
                                                 </div>
