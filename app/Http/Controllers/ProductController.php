@@ -13,13 +13,15 @@ class ProductController extends Controller
     use GeneralTrait;
     public function index()
     {
-        $categories = $this->get_categories();
-        return view('add_product', ['categories'=>$categories]);
+        $products = Product::all();
+        $product_images = ProductImage::all();
+        return view('admin.products', ['products' => $products, 'product_images' => $product_images]);
     }
 
     public function create()
     {
-        //
+        $categories = $this->get_categories();
+        return view('admin.add_product', ['categories'=>$categories]);
     }
 
     public function store(Request $request)
@@ -36,10 +38,10 @@ class ProductController extends Controller
             'category_id'=>$request->category_id,
             'Product_Name'=>$request->Product_Name,
             'Description'=>$request->Description,
-            'Price'=>100,
-            'Stock'=>500,
-            'is_featured'=>1,
-            'is_active'=>1
+            'Price'=>$request->price,
+            'Stock'=>$request->stock,
+            'is_featured'=>$request->featured,
+            'is_active'=>$request->status
         );
         $create = Product::create($fields);
         if($create){
@@ -71,7 +73,9 @@ class ProductController extends Controller
 
     public function show($id)
     {
-        //
+        $product = Product::find($id);
+        $category = Category::all();
+        return view('admin.edit_product', ['categories' => $category, 'product' => $product]);
     }
 
     public function edit($id)
@@ -81,7 +85,43 @@ class ProductController extends Controller
 
     public function update(Request $request, $id)
     {
-        //
+      return $request; 
+      die;
+        $fields = array(
+            'category_id'=>$request->category_id,
+            'Product_Name'=>$request->Product_Name,
+            'Description'=>$request->Description,
+            'Price'=>$request->price,
+            'Stock'=>$request->stock,
+            'is_featured'=>$request->featured,
+            'is_active'=>$request->status
+        );
+        $update = Product::where('id', $id)->update($fields);
+        if($update){
+            $attachments = array();
+        if($request->hasFile('main_image')){
+            $main_image = $request->main_image;
+                $main_img = $main_image->getClientOriginalName();
+                $main_image->move(public_path('uploads/products/'),$main_img);
+                $attachments[] = array('product_id'=>$update->id, 'image'=>$main_img, 'is_main'=>1);
+        }
+        if($request->hasFile('images')){
+            $images = $request->images;
+            foreach($images as $image){
+                $img = $image->getClientOriginalName();
+                $image->move(public_path('uploads/products/'),$img);
+                $attachments[] = array('product_id'=>$update->id, 'image'=>$img, 'is_main'=>0);
+            }
+        }
+        foreach($attachments as $attachment){
+            $img_create = ProductImage::where('id', $id)->update($attachment);
+        }
+        
+            return redirect()->back()->with('msg', 'Product Updated Successfully!');
+        }
+        else{
+            return redirect()->back()->with('msg', 'Could not updated product, Try Again!');
+        }
     }
 
     public function destroy($id)
