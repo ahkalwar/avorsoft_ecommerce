@@ -5,7 +5,7 @@
                     <div class="container-fluid">
                     <div class="row mt-4"> 
                         <div class="col-md-10 col-lg-10">
-                            <h1 class="">Users</h1>
+                            <h1 class="">Products</h1>
                         </div>
                         <div class="col-md-2 col-lg-2 text-right">
                             <a href="{{ url('product/create') }}" class="btn btn-success">Add<svg width="1.8em" height="1.8em" viewBox="0 0 16 16" class="bi bi-plus" fill="currentColor" xmlns="http://www.w3.org/2000/svg">

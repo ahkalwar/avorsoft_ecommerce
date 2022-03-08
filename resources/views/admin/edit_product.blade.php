@@ -32,10 +32,10 @@
                                                     <label class="small mb-1" for="inputFirstName">Category</label>
                                                         <select class="custom-select" name="category_id">
                                                         @foreach($categories as $category)
-                                                        @if($category->category_id == $product->category_id)
-                                                          <option value="">Select Category</option>
+                                                        @if($category->id == $product->category_id)
+                                                        <option value="{{ $category->id }}" selected>{{ $category->category_name }}</option>
                                                           @else
-                                                         <option value="{{ $category->category_id }}" selected>{{ $category->category_name }}</option>
+                                                         <option value="{{ $category->id }}">{{ $category->category_name }}</option>
                                                          @endif 
                                                      @endforeach    
                                                      </select>

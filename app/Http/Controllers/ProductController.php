@@ -85,8 +85,7 @@ class ProductController extends Controller
 
     public function update(Request $request, $id)
     {
-      return $request; 
-      die;
+      
         $fields = array(
             'category_id'=>$request->category_id,
             'Product_Name'=>$request->Product_Name,
@@ -103,14 +102,14 @@ class ProductController extends Controller
             $main_image = $request->main_image;
                 $main_img = $main_image->getClientOriginalName();
                 $main_image->move(public_path('uploads/products/'),$main_img);
-                $attachments[] = array('product_id'=>$update->id, 'image'=>$main_img, 'is_main'=>1);
+                $attachments[] = array('product_id'=>$id, 'image'=>$main_img, 'is_main'=>1);
         }
         if($request->hasFile('images')){
             $images = $request->images;
             foreach($images as $image){
                 $img = $image->getClientOriginalName();
                 $image->move(public_path('uploads/products/'),$img);
-                $attachments[] = array('product_id'=>$update->id, 'image'=>$img, 'is_main'=>0);
+                $attachments[] = array('product_id'=>$id, 'image'=>$img, 'is_main'=>0);
             }
         }
         foreach($attachments as $attachment){
@@ -126,6 +125,18 @@ class ProductController extends Controller
 
     public function destroy($id)
     {
-        //
+        $product = Product::find($id);
+       
+       $data =  $product->delete();
+       $productimg = ProductImage::where('product_id', $id)->delete();
+       
+        if($data){
+            return redirect()->back()->with('msg', 'Product Deleted Successfully!');
+        }
+        else{
+            return redirect()->back()->with('msg', 'Could not delete product, Try Again!');
+        }
+
+        
     }
 }
