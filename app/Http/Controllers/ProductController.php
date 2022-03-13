@@ -139,4 +139,18 @@ class ProductController extends Controller
 
         
     }
+
+    public function productimages($id){
+
+        $product_image = ProductImage::where('product_id',$id)->get();
+        
+        //return $product_image;
+        
+        return view('admin.product_images',['product_images' => $product_image]);
+    }
+
+
+
+
+
 }

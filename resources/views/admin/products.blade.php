@@ -41,7 +41,7 @@
                                         <?php $i = 1; ?>
                                         @foreach ($products as $product)
                                             <tr>
-                                                <td>{{ $i++ }}</td>
+                                                <td>{{ $i++ }} <a href="{{ url('productimages/'.$product->id) }}" style="font-size:24px"> <i class="material-icons">photo_library</i></a></td>
                                                 <td>{{ $product->Product_Name }}</td>
                                                 <td>{{ $product->Description }}</td>
                                                 <td>{{ $product->Price }}</td>
