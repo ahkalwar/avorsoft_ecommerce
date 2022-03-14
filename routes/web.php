@@ -10,6 +10,8 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\ProductImagesController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -46,5 +48,17 @@ Route::post('/remove_cart_item', [CartController::class, 'remove_cart_item']);
 Route::resource('/category', CategoryController::class);
 Route::resource('/role', RoleController::class);
 Route::resource('/user', UserController::class);
+Route::get('/checkout', [CheckoutController::class, 'checkout']);
+Route::post('/place_order', [CheckoutController::class, 'place_order']);
+Route::resource('/product', ProductController::class);
+
+//Product Images Start from here...
+
+Route::get('/productimages/{id}', [ProductController::class, 'productimages']);
+Route::resource('/productimages', ProductImagesController::class);
+
+
+
+
 Route::get('/checkout', [CheckoutController::class, 'checkout']);
 Route::post('/place_order', [CheckoutController::class, 'place_order']);
