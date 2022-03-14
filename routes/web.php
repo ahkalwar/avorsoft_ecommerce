@@ -55,7 +55,7 @@ Route::resource('/product', ProductController::class);
 //Product Images Start from here...
 
 Route::get('/productimages/{id}', [ProductController::class, 'productimages']);
-Route::resource('/productimages', ProductImagesController::class);
+Route::resource('/productimage', ProductImagesController::class);
 
 
 
