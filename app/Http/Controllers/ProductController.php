@@ -146,7 +146,7 @@ class ProductController extends Controller
         
         //return $product_image;
         
-        return view('admin.product_images',['product_images' => $product_image]);
+        return view('admin.product_images',['product_images' => $product_image, 'product_id'=>$id]);
     }
 
 

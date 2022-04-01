@@ -78,22 +78,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="form-row">
-                                                <div class="col-md-12">
-                                                    <div class="form-group">
-                                                    <label class="small mb-1" for="threshold">Product Main Image</label>
-                                                      <input class="form-control py-4" id="threshold" type="file" name="main_image" />
-                                                      <span class="small text-danger">{{ $errors->first('main_image') }}</span>
-                                                    </div>
-                                                </div>
-                                            </div><div class="form-row">
-                                                <div class="col-md-12">
-                                                    <div class="form-group">
-                                                    <label class="small mb-1" for="threshold">Product other Images</label>
-                                                      <input class="form-control py-4" id="threshold" type="file" name="images[]" multiple="multiple" />
-                                                    </div>
-                                                </div>
-                                            </div>
+                                           
                                             <div class="form-row">
                                                 <div class="col-md-12">
                                                     <div class="form-group">

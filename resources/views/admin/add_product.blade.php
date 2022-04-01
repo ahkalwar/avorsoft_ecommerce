@@ -116,7 +116,7 @@
                                                 </div>
                                             </div>
                                             <div class="form-group mt-4 mb-0">
-                                            <input type="submit" name="add_category" value="Add Product" class="btn btn-primary btn-block">
+                                            <input type="submit" name="add_product" value="Add Product" class="btn btn-primary btn-block">
                                             </div>
                                         </form>
                                     </div>
