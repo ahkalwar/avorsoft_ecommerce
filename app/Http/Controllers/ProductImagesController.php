@@ -41,40 +41,25 @@ class ProductImagesController extends Controller
      */
     public function store(Request $request)
     {
-      // return $request;
-       $fields = array(
-        'product_id'=>$request->product_id,        
-        'image'=>$request->main_image,
-        'is_main'=>$request->is_main,
-       
-    );
-    $create = ProductImage::create($fields);
-    if($create){
-        $attachments = array();
-    if($request->hasFile('main_image')){
-        $main_image = $request->main_image;
+    //    return $request;
+    //    die;
+       if($request->hasFile('main_image')){
+            $main_image = $request->main_image;
             $main_img = $main_image->getClientOriginalName();
             $main_image->move(public_path('uploads/products/'),$main_img);
-            $attachments[] = array('product_id'=>$create->id, 'image'=>$main_img, 'is_main'=>1);
-    }
-    if($request->hasFile('images')){
-        $images = $request->images;
-        foreach($images as $image){
-            $img = $image->getClientOriginalName();
-            $image->move(public_path('uploads/products/'),$img);
-            $attachments[] = array('product_id'=>$create->id, 'image'=>$img, 'is_main'=>0);
+        $fields = array(
+        'product_id'=>$request->product_id,        
+        'image'=>$main_img,
+        'is_main'=>0,
+            );
+        $create = ProductImage::create($fields);
+        if($create){
+                return redirect()->back()->with('msg', 'Product Image Added Successfully!');
+                    }
+        else{
+                return redirect()->back()->with('msg', 'Could not add product image, Try Again!');
+            }
         }
-    }
-    foreach($attachments as $attachment){
-        $img_create = ProductImage::create($attachment);
-    }
-    
-        return redirect()->back()->with('msg', 'Product Image Added Successfully!');
-    }
-    else{
-        return redirect()->back()->with('msg', 'Could not add product image, Try Again!');
-    }
-
     }
 
     /**

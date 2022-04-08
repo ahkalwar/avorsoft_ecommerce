@@ -125,6 +125,8 @@ class ProductController extends Controller
 
     public function destroy($id)
     {
+        return "r u sure you want to delete product";
+        die;
         $product = Product::find($id);
        
        $data =  $product->delete();
