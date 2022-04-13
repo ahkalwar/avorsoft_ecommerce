@@ -35,7 +35,13 @@
                         <a class="dropdown-item" href="#">Settings</a>
                         <a class="dropdown-item" href="#">Activity Log</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="login.html">Logout</a>
+                        <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+
+                        <button type="submit" class="dropdown-item">
+                            {{ __('Log Out') }}
+                        </button>
+                    </form>
                     </div>
                 </li>
             </ul>
@@ -46,7 +52,7 @@
                     <div class="sb-sidenav-menu">
                         <div class="nav">
                             <!-- <div class="sb-sidenav-menu-heading">Core</div> -->
-                            <a class="nav-link" href="dashboard">
+                            <a class="nav-link" href="admin/dashboard">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Dashboard
                             </a>
@@ -57,8 +63,8 @@
                                     </a>
                                     <div class="collapse" id="categories" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
                                         <nav class="sb-sidenav-menu-nested nav">
-                                            <a class="nav-link" href="{{ url('category/create') }}">Add Category</a>
-                                            <a class="nav-link" href="{{ url('category') }}">List Category</a>
+                                            <a class="nav-link" href="{{ url('admin/category/create') }}">Add Category</a>
+                                            <a class="nav-link" href="{{ url('admin/category') }}">List Category</a>
                                         </nav>
                                     </div>
                                     <!-- Category Ends -->
@@ -69,8 +75,8 @@
                                     </a>
                                     <div class="collapse" id="roles" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
                                         <nav class="sb-sidenav-menu-nested nav">
-                                            <a class="nav-link" href="{{ url('role/create') }}">Add Role</a>
-                                            <a class="nav-link" href="{{ url('role') }}">List Roles</a>
+                                            <a class="nav-link" href="{{ url('admin/role/create') }}">Add Role</a>
+                                            <a class="nav-link" href="{{ url('admin/role') }}">List Roles</a>
                                         </nav>
                                     </div>
                                     <!-- Roles Ends  -->
@@ -81,8 +87,8 @@
                                     </a>
                                     <div class="collapse" id="users" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
                                         <nav class="sb-sidenav-menu-nested nav">
-                                            <a class="nav-link" href="{{ url('user/create') }}">Add User</a>
-                                            <a class="nav-link" href="{{ url('user') }}">List Users</a>
+                                            <a class="nav-link" href="{{ url('admin/user/create') }}">Add User</a>
+                                            <a class="nav-link" href="{{ url('admin/user') }}">List Users</a>
                                         </nav>
                                     </div>
                                     <!-- Users Ends  -->
@@ -93,8 +99,8 @@
                                     </a>
                                     <div class="collapse" id="products" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
                                         <nav class="sb-sidenav-menu-nested nav">
-                                            <a class="nav-link" href="{{ url('product/create') }}">Add Product</a>
-                                            <a class="nav-link" href="{{ url('product') }}">List Products</a>
+                                            <a class="nav-link" href="{{ url('admin/product/create') }}">Add Product</a>
+                                            <a class="nav-link" href="{{ url('admin/product') }}">List Products</a>
                                         </nav>
                                     </div>
                                     <!-- Products Ends  -->

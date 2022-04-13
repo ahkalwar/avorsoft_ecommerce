@@ -11,8 +11,10 @@ use App\Models\Cart;
 use App\Models\Order;
 use App\Models\Orderitem;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Traits\GeneralTrait;
 class CheckoutController extends Controller
 {
+    use GeneralTrait;
     public function checkout(){
         if(Auth::check()) {
             $user_id = Auth::id();
@@ -24,6 +26,7 @@ class CheckoutController extends Controller
             $data = array();
             $data['categories'] = Category::where('is_active', 1)->get();
             $data['cartItems'] = $cartItems;
+            $data['cart_count'] = $this->get_cart_count();
             return view('checkout', $data);
         }
         else{

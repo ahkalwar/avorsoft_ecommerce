@@ -9,7 +9,7 @@
                             <h1 class="">Add Role</h1>
                         </div>
                         <div class="col-md-2 col-lg-2 text-right">
-                            <a href="{{ url('role') }}" class="btn btn-success">View List</a>
+                            <a href="{{ url('admin/role') }}" class="btn btn-success">View List</a>
                         </div>
                     </div>
                     <hr />
@@ -23,7 +23,7 @@
                             <div class="col-sm-10 col-md-10 col-lg-10">
                                 <div class="card border-0 rounded-lg mt-3">
                                     <div class="card-body">
-                                        <form  method="POST" action="{{ url('role') }}">
+                                        <form  method="POST" action="{{ url('admin/role') }}">
                                         <!-- @method('PUT') -->
                                         @csrf
                                             <div class="form-row">

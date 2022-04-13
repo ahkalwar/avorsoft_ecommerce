@@ -133,110 +133,7 @@
                     </div>
 
                     <div class="header-right">
-                        <div class="header-dropdown-link">
-                            <div class="dropdown compare-dropdown">
-                                <a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static" title="Compare Products" aria-label="Compare Products">
-                                    <i class="icon-random"></i>
-                                    <span class="compare-txt">Compare</span>
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-right">
-                                    <ul class="compare-products">
-                                        <li class="compare-product">
-                                            <a href="#" class="btn-remove" title="Remove Product"><i class="icon-close"></i></a>
-                                            <h4 class="compare-product-title"><a href="product.html">Blue Night Dress</a></h4>
-                                        </li>
-                                        <li class="compare-product">
-                                            <a href="#" class="btn-remove" title="Remove Product"><i class="icon-close"></i></a>
-                                            <h4 class="compare-product-title"><a href="product.html">White Long Skirt</a></h4>
-                                        </li>
-                                    </ul>
-
-                                    <div class="compare-actions">
-                                        <a href="#" class="action-link">Clear All</a>
-                                        <a href="#" class="btn btn-outline-primary-2"><span>Compare</span><i class="icon-long-arrow-right"></i></a>
-                                    </div>
-                                </div><!-- End .dropdown-menu -->
-                            </div><!-- End .compare-dropdown -->
-
-                            <a href="wishlist.html" class="wishlist-link">
-                                <i class="icon-heart-o"></i>
-                                <span class="wishlist-count">3</span>
-                                <span class="wishlist-txt">Wishlist</span>
-                            </a>
-
-                            <div class="dropdown cart-dropdown">
-                                <a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static">
-                                    <i class="icon-shopping-cart"></i>
-                                    <?php
-                                    $count_cart = 0;
-                                    if($cart_count){
-                                        $count_cart = $cart_count;
-                                    }
-                                    else if(count(Cart::getContent())){
-                                        $count_cart = count(Cart::getContent());
-                                    }
-                                    ?>
-                                    <span class="cart-count" style="display:{{ $count_cart>0?'flex':'none' }};">{{ $count_cart }}</span>
-                                    <span class="cart-txt">Cart</span>
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-right">
-                                    <div class="dropdown-cart-products">
-                                        <div class="product">
-                                            <div class="product-cart-details">
-                                                <h4 class="product-title">
-                                                    <a href="product.html">Beige knitted elastic runner shoes</a>
-                                                </h4>
-
-                                                <span class="cart-product-info">
-                                                    <span class="cart-product-qty">1</span>
-                                                    x $84.00
-                                                </span>
-                                            </div><!-- End .product-cart-details -->
-
-                                            <figure class="product-image-container">
-                                                <a href="product.html" class="product-image">
-                                                    <img src="assets/images/products/cart/product-1.jpg" alt="product">
-                                                </a>
-                                            </figure>
-                                            <a href="#" class="btn-remove" title="Remove Product"><i class="icon-close"></i></a>
-                                        </div><!-- End .product -->
-
-                                        <div class="product">
-                                            <div class="product-cart-details">
-                                                <h4 class="product-title">
-                                                    <a href="product.html">Blue utility pinafore denim dress</a>
-                                                </h4>
-
-                                                <span class="cart-product-info">
-                                                    <span class="cart-product-qty">1</span>
-                                                    x $76.00
-                                                </span>
-                                            </div><!-- End .product-cart-details -->
-
-                                            <figure class="product-image-container">
-                                                <a href="product.html" class="product-image">
-                                                    <img src="assets/images/products/cart/product-2.jpg" alt="product">
-                                                </a>
-                                            </figure>
-                                            <a href="#" class="btn-remove" title="Remove Product"><i class="icon-close"></i></a>
-                                        </div><!-- End .product -->
-                                    </div><!-- End .cart-product -->
-
-                                    <div class="dropdown-cart-total">
-                                        <span>Total</span>
-
-                                        <span class="cart-total-price">$160.00</span>
-                                    </div><!-- End .dropdown-cart-total -->
-
-                                    <div class="dropdown-cart-action">
-                                        <a href="{{ url('/cart') }}" class="btn btn-primary">View Cart</a>
-                                        <a href="checkout.html" class="btn btn-outline-primary-2"><span>Checkout</span><i class="icon-long-arrow-right"></i></a>
-                                    </div><!-- End .dropdown-cart-total -->
-                                </div><!-- End .dropdown-menu -->
-                            </div><!-- End .cart-dropdown -->
-                        </div>
+                        <i class="la la-lightbulb-o"></i><span>Clearance Up to 30% Off</span>
                     </div><!-- End .header-right -->
                 </div><!-- End .container -->
             </div><!-- End .header-middle -->
@@ -450,7 +347,111 @@
                         </nav><!-- End .main-nav -->
                     </div><!-- End .col-lg-9 -->
                     <div class="header-right">
-                        <i class="la la-lightbulb-o"></i><p>Clearance Up to 30% Off</span></p>
+                        
+                        <div class="header-dropdown-link">
+                            <div class="dropdown compare-dropdown">
+                                <a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static" title="Compare Products" aria-label="Compare Products">
+                                    <i class="icon-random"></i>
+                                    <p class="compare-txt">Compare</p>
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-right">
+                                    <ul class="compare-products">
+                                        <li class="compare-product">
+                                            <a href="#" class="btn-remove" title="Remove Product"><i class="icon-close"></i></a>
+                                            <h4 class="compare-product-title"><a href="product.html">Blue Night Dress</a></h4>
+                                        </li>
+                                        <li class="compare-product">
+                                            <a href="#" class="btn-remove" title="Remove Product"><i class="icon-close"></i></a>
+                                            <h4 class="compare-product-title"><a href="product.html">White Long Skirt</a></h4>
+                                        </li>
+                                    </ul>
+
+                                    <div class="compare-actions">
+                                        <a href="#" class="action-link">Clear All</a>
+                                        <a href="#" class="btn btn-outline-primary-2"><span>Compare</span><i class="icon-long-arrow-right"></i></a>
+                                    </div>
+                                </div><!-- End .dropdown-menu -->
+                            </div><!-- End .compare-dropdown -->
+
+                            <a href="wishlist.html" class="wishlist-link">
+                                <i class="icon-heart-o"></i>
+                                <span class="wishlist-count">3</span>
+                                <p class="wishlist-txt">Wishlist</p>
+                            </a>
+
+                            <div class="dropdown cart-dropdown">
+                                <a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static">
+                                    <i class="icon-shopping-cart"></i>
+                                    <?php
+                                    $count_cart = 0;
+                                    if($cart_count){
+                                        $count_cart = $cart_count;
+                                    }
+                                    else if(count(Cart::getContent())){
+                                        $count_cart = count(Cart::getContent());
+                                    }
+                                    ?>
+                                    <span class="cart-count" style="display:{{ $count_cart>0?'flex':'none' }};">{{ $count_cart }}</span>
+                                    <p class="cart-txt">Cart</p>
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-right">
+                                    <div class="dropdown-cart-products">
+                                        <div class="product">
+                                            <div class="product-cart-details">
+                                                <h4 class="product-title">
+                                                    <a href="product.html">Beige knitted elastic runner shoes</a>
+                                                </h4>
+
+                                                <span class="cart-product-info">
+                                                    <span class="cart-product-qty">1</span>
+                                                    x $84.00
+                                                </span>
+                                            </div><!-- End .product-cart-details -->
+
+                                            <figure class="product-image-container">
+                                                <a href="product.html" class="product-image">
+                                                    <img src="assets/images/products/cart/product-1.jpg" alt="product">
+                                                </a>
+                                            </figure>
+                                            <a href="#" class="btn-remove" title="Remove Product"><i class="icon-close"></i></a>
+                                        </div><!-- End .product -->
+
+                                        <div class="product">
+                                            <div class="product-cart-details">
+                                                <h4 class="product-title">
+                                                    <a href="product.html">Blue utility pinafore denim dress</a>
+                                                </h4>
+
+                                                <span class="cart-product-info">
+                                                    <span class="cart-product-qty">1</span>
+                                                    x $76.00
+                                                </span>
+                                            </div><!-- End .product-cart-details -->
+
+                                            <figure class="product-image-container">
+                                                <a href="product.html" class="product-image">
+                                                    <img src="assets/images/products/cart/product-2.jpg" alt="product">
+                                                </a>
+                                            </figure>
+                                            <a href="#" class="btn-remove" title="Remove Product"><i class="icon-close"></i></a>
+                                        </div><!-- End .product -->
+                                    </div><!-- End .cart-product -->
+
+                                    <div class="dropdown-cart-total">
+                                        <span>Total</span>
+
+                                        <span class="cart-total-price">$160.00</span>
+                                    </div><!-- End .dropdown-cart-total -->
+
+                                    <div class="dropdown-cart-action">
+                                        <a href="{{ url('/cart') }}" class="btn btn-primary">View Cart</a>&nbsp
+                                        <a href="checkout.html" class="btn btn-outline-primary-2"><span>Checkout</span><i class="icon-long-arrow-right"></i></a>
+                                    </div><!-- End .dropdown-cart-total -->
+                                </div><!-- End .dropdown-menu -->
+                            </div><!-- End .cart-dropdown -->
+                        </div>
                     </div>
                 </div><!-- End .container -->
             </div><!-- End .header-bottom -->
