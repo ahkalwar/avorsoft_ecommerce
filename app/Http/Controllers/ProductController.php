@@ -125,6 +125,8 @@ class ProductController extends Controller
 
     public function destroy($id)
     {
+        return "r u sure you want to delete product";
+        die;
         $product = Product::find($id);
        
        $data =  $product->delete();
@@ -146,7 +148,7 @@ class ProductController extends Controller
         
         //return $product_image;
         
-        return view('admin.product_images',['product_images' => $product_image]);
+        return view('admin.product_images',['product_images' => $product_image, 'product_id'=>$id]);
     }
 
 

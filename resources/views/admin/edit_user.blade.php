@@ -85,7 +85,7 @@
                                             </div>
                                             
                                             <div class="form-group mt-4 mb-0">
-                                            <input type="submit" name="add_user" value="Update User" class="btn btn-primary btn-block">
+                                            <input type="submit" name="update_user" value="Update User" class="btn btn-primary btn-block">
                                             </div>
                                         </form>
                                     </div>
