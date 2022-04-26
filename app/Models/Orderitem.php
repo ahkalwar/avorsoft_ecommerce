@@ -9,4 +9,9 @@ class Orderitem extends Model
 {
     use HasFactory;
     protected $guarded = [];
+
+    public function product()
+    {
+        return $this->belongsTO('App\Models\Product');
+    }
 }

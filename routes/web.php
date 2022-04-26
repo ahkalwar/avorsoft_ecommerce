@@ -11,6 +11,7 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\ProductImagesController;
+use App\Http\Controllers\OrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,7 +33,7 @@ Route::group(['middleware' => ['is_admin'], 'prefix' => 'admin', 'as' => 'admin.
 
     Route::get('/dashboard', function () {
         return view('admin.dashboard');
-    })->name('dashboard');
+    })->middleware('is_admin')->name('dashboard');
     
     // Admin 
 //Route::get('/add_category', CategoryController::class, 'add_category');
@@ -45,6 +46,10 @@ Route::resource('/product', ProductController::class);
 
 Route::get('/productimages/{id}', [ProductController::class, 'productimages']);
 Route::resource('/productimage', ProductImagesController::class);
+Route::get('/addimage/{id}', [ProductImagesController::class, 'addimage']);
+Route::get('/orders', [OrderController::class, 'orders']);
+Route::post('/orders_list', [OrderController::class, 'orders_list']);
+Route::get('/order_items/{id}', [OrderController::class, 'order_items']);
 });
 
 Route::get('/', [HomeController::class, 'index']);
@@ -58,9 +63,5 @@ Route::get('/customer_logout', [LoginController::class, 'customer_logout']);
 Route::post('/add_item_to_cart', [CartController::class, 'add_item_to_cart']);
 Route::get('/cart', [CartController::class, 'cart_list']);
 Route::post('/remove_cart_item', [CartController::class, 'remove_cart_item']);
-Route::get('/addimage/{id}', [ProductImagesController::class, 'addimage']);
-
-
-
 Route::get('/checkout', [CheckoutController::class, 'checkout']);
 Route::post('/place_order', [CheckoutController::class, 'place_order']);
